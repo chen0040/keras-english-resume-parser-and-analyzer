@@ -1,17 +1,17 @@
-# keras-chinese-resume-parser-and-analyzer
+# keras-english-resume-parser-and-analyzer
 
-Deep learning project that parses and analyze chinese resumes.
+Deep learning project that parses and analyze english resumes.
 
 The objective of this project is to use Keras and Deep Learning such as CNN and recurrent neural network to automate the
-task of parsing a chinese resume. 
+task of parsing a english resume. 
 
 
 # Overview
 
 ### Parser Features 
 
-* Chinese NLP using SnowNLP
-* Extract chinese texts using pdfminer.six and python-docx from PDF nad DOCX
+* English NLP using NLTK
+* Extract english texts using pdfminer.six and python-docx from PDF nad DOCX
 * Rule-based resume parser has been implemented.
 
 ### Deep Learning Features
@@ -34,7 +34,7 @@ The included deep learning models that classify each line in the resume files in
     * LSTM with category cross-entropy loss function
     * Bi-directional LSTM/GRU with categorical cross-entropy loss function
     
-# Usage 1: Rule-based Chinese Resume Parser
+# Usage 1: Rule-based English Resume Parser
 
 The [sample code](demo/rule_base_parser.py) below shows how to scan all the resumes (in PDF and DOCX formats) from a 
 [demo/data/resume_samples] folder and print out a summary from the resume parser if information extracted are available:
