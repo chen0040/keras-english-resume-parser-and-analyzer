@@ -1,0 +1,12 @@
+scikit-learn
+keras
+tensorflow
+pandas
+numpy
+scipy
+h5py
+matplotlib
+pillow
+pdfminer.six
+python-docx
+nltk
