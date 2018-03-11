@@ -2,6 +2,7 @@ from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 import nltk
 
+
 def create_tokenizer(lines):
     tokenizer = Tokenizer()
     tokenizer.fit_on_texts(lines)
@@ -25,6 +26,7 @@ def encode_text(tokenizer, lines, length):
     padded = pad_sequences(encoded, maxlen=length, padding='post')
     return padded
 
+
 def main():
     trainLines = []
     # create tokenizer
@@ -38,6 +40,7 @@ def main():
     # encode data
     trainX = encode_text(tokenizer, trainLines, length)
     print(trainX.shape)
+
 
 if __name__ == '__main__':
     main()
