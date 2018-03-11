@@ -68,6 +68,11 @@ if __name__ == '__main__':
 
 ```
 
+IMPORTANT: the parser rules are implemented in the [parser_rules.py](keras_en_parser_and_analyzer/library/utility/parser_rules.py).
+Each of these rules will be applied to every line of text in the resume file and return the target accordingly (or
+return None if not found in a line). As these rules are very naive implementation, you may want to customize them further based on the resumes that you
+are working with.
+
 # Usage 2: Deep Learning Resume Parser
 
 ### Step 1: training data generation and annotation
