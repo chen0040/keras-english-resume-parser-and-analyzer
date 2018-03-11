@@ -13,11 +13,11 @@ def extract_sex(parts, line):
     sex_found = False
     sex = None
     for w in parts:
-        if '性别' in w:
+        if 'sex' in w:
             sex_found = True
             continue
         if sex_found and ':' not in w:
-            if w == '男':
+            if w == 'male':
                 sex = 'male'
             else:
                 sex = 'female'
@@ -29,7 +29,7 @@ def extract_education(parts, line):
     found = False
     education = None
     for w in parts:
-        if '学历' in w:
+        if 'education' in w:
             found = True
             continue
         if found and ':' not in w:
