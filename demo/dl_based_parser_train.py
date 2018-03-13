@@ -1,9 +1,13 @@
 import numpy as np
-
-from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
+import sys
+import os
 
 
 def main():
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
+    from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
+
     random_state = 42
     np.random.seed(random_state)
 

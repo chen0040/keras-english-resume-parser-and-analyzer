@@ -1,8 +1,11 @@
 import os
+import sys
+from tkinter import *
+
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
 from keras_en_parser_and_analyzer.library.dl_based_parser import line_types, line_labels
-from keras_en_parser_and_analyzer.library.utility.io_utils import read_pdf, read_pdf_and_docx
-from tkinter import *
+from keras_en_parser_and_analyzer.library.utility.io_utils import read_pdf_and_docx
 
 
 class AnnotatorGui(Frame):
