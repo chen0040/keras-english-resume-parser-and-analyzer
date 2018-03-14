@@ -112,8 +112,11 @@ def gui_annotate(training_data_dir_path, index, file_path, file_content):
 
 
 def main():
-    data_dir_path = './data'  # directory to scan for any pdf files
-    training_data_dir_path = './data/training_data'
+    current_dir = os.path.dirname(__file__)
+    current_dir = current_dir if current_dir is not '' else '.'
+
+    data_dir_path = current_dir + '/data'  # directory to scan for any pdf files
+    training_data_dir_path = current_dir + '/data/training_data'
     collected = read_pdf_and_docx(data_dir_path, command_logging=True, callback=lambda index, file_path, file_content: {
         gui_annotate(training_data_dir_path, index, file_path, file_content)
     })

@@ -11,8 +11,10 @@ def main():
     random_state = 42
     np.random.seed(random_state)
 
-    output_dir_path = './models'
-    training_data_dir_path = './data/training_data'
+    current_dir = os.path.dirname(__file__)
+    current_dir = current_dir if current_dir is not '' else '.'
+    output_dir_path = current_dir + '/models'
+    training_data_dir_path = current_dir + '/data/training_data'
 
     classifier = ResumeParser()
     batch_size = 64

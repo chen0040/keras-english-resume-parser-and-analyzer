@@ -119,16 +119,22 @@ Below is the code for [dl_based_parser_train.py](demo/dl_based_parser_train.py):
 
 ```python
 import numpy as np
-
-from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
+import os
+import sys 
 
 
 def main():
     random_state = 42
     np.random.seed(random_state)
 
-    output_dir_path = './models'
-    training_data_dir_path = './data/training_data'
+    current_dir = os.path.dirname(__file__)
+    current_dir = current_dir if current_dir is not '' else '.'
+    output_dir_path = current_dir + '/models'
+    training_data_dir_path = current_dir + '/data/training_data'
+    
+    # add keras_en_parser_and_analyzer module to the system path
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+    from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
 
     classifier = ResumeParser()
     batch_size = 64
@@ -178,12 +184,19 @@ python dl_based_parser_predict.py
 Below is the code for [dl_based_parser_predict.py](demo/dl_based_parser_predict.py):
 
 ```python
-from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
-from keras_en_parser_and_analyzer.library.utility.io_utils import read_pdf_and_docx
+import os
+import sys 
 
 
 def main():
-    data_dir_path = './data/resume_samples' # directory to scan for any pdf and docx files
+    current_dir = os.path.dirname(__file__)
+    current_dir = current_dir if current_dir is not '' else '.'
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+    
+    from keras_en_parser_and_analyzer.library.dl_based_parser import ResumeParser
+    from keras_en_parser_and_analyzer.library.utility.io_utils import read_pdf_and_docx
+    
+    data_dir_path = current_dir + '/data/resume_samples' # directory to scan for any pdf and docx files
 
     def parse_resume(file_path, file_content):
         print('parsing file: ', file_path)
