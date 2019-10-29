@@ -1,9 +1,9 @@
 # keras-english-resume-parser-and-analyzer
 
-Deep learning project that parses and analyze english resumes.
+This is a deep learning project that parses through English resumes and analyzes their content.
 
-The objective of this project is to use Keras and Deep Learning such as CNN and recurrent neural network to automate the
-task of parsing a english resume. 
+The objective of this project is to use Keras and Deep Learning, such as CNN and recurrent neural network, to automate the
+task of parsing through an English resume. 
 
 
 # Overview
@@ -11,8 +11,8 @@ task of parsing a english resume.
 ### Parser Features 
 
 * English NLP using NLTK
-* Extract english texts using pdfminer.six and python-docx from PDF nad DOCX
-* Rule-based resume parser has been implemented.
+* Extract English texts using pdfminer.six and python-docx from PDF nad DOCX
+* Rule-based resume parser
 
 ### Deep Learning Features
 
@@ -37,7 +37,7 @@ The included deep learning models that classify each line in the resume files in
 # Usage 1: Rule-based English Resume Parser
 
 The [sample code](demo/rule_base_parser.py) below shows how to scan all the resumes (in PDF and DOCX formats) from a 
-[demo/data/resume_samples] folder and print out a summary from the resume parser if information extracted are available:
+[demo/data/resume_samples] folder and print out a summary from the resume parser if the information extracted is available:
 
 ```python
 from keras_en_parser_and_analyzer.library.rule_based_parser import ResumeParser
@@ -69,9 +69,8 @@ if __name__ == '__main__':
 ```
 
 IMPORTANT: the parser rules are implemented in the [parser_rules.py](keras_en_parser_and_analyzer/library/utility/parser_rules.py).
-Each of these rules will be applied to every line of text in the resume file and return the target accordingly (or
-return None if not found in a line). As these rules are very naive implementation, you may want to customize them further based on the resumes that you
-are working with.
+Each of these rules will be applied to every line of text in the resume file and will return the target accordingly (or
+return None if not found in any line). As these rules have been naively implemented, you may want to customize them further based on the resumes that you are working with.
 
 # Usage 2: Deep Learning Resume Parser
 
@@ -79,7 +78,7 @@ are working with.
 
 A training data generation and annotation tool is created in the [demo](demo) folder which allows 
 resume deep learning training data to be generated from any pdf and docx files stored in the 
-[demo/data/resume_samples](demo/data/resume_samples) folder, To launch this tool, run the following 
+[demo/data/resume_samples](demo/data/resume_samples) folder. To launch this tool, run the following 
 command from the root directory of the project:
 
 ```batch
@@ -91,8 +90,8 @@ This will parse the pdf and docx files in [demo/data/resume_samples](demo/data/r
 and for each of these file launch a Tkinter-based GUI form to user to annotate individual text line
 in the pdf or docx file (clicking the "Type: ..." and "Label: ..." buttons multiple time to select the 
 correct annotation for each line). On each form closing, the generated and annotated data will be saved
-to a text file in the [demo/data/training_data](demo/data/training_data) folder.  each line in the
-text file will have the following format
+to a text file in the [demo/data/training_data](demo/data/training_data) folder. Each line in the
+text file will have the following format:
 
 ```text
 line_type   line_label  line_content
@@ -172,7 +171,7 @@ classifier.line_type_classifier = WordVecCnnLstm()
 
 ### Step 3: parse resumes using trained parser
 
-After the trained models are saved in the [demo/models](demo/models) folder,
+After the trained models have been saved in the [demo/models](demo/models) folder,
 one can use the resume parser to parse the resumes in the [demo/data/resume_samples](demo/data/resume_samples)
 by running the following command:
 
@@ -226,7 +225,7 @@ if __name__ == '__main__':
 # Configure to run on GPU on Windows
 
 * Step 1: Change tensorflow to tensorflow-gpu in requirements.txt and install tensorflow-gpu
-* Step 2: Download and install the [CUDA® Toolkit 9.0](https://developer.nvidia.com/cuda-90-download-archive) (Please note that
-currently CUDA® Toolkit 9.1 is not yet supported by tensorflow, therefore you should download CUDA® Toolkit 9.0)
+* Step 2: Download and install [CUDA® Toolkit 9.0](https://developer.nvidia.com/cuda-90-download-archive) (Please note that
+currently CUDA® Toolkit 9.1 is not yet supported by tensorflow. Therefore you should download CUDA® Toolkit 9.0)
 * Step 3: Download and unzip the [cuDNN 7.4 for CUDA@ Toolkit 9.0](https://developer.nvidia.com/cudnn) and add the
-bin folder of the unzipped directory to the $PATH of your Windows environment 
+bin folder of the unzipped directory to the $PATH of your Windows environment. 
