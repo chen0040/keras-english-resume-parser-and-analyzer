@@ -16,12 +16,27 @@ class AnnotatorGui(Frame):
 
         self.master.rowconfigure(0, weight=1)
         self.master.columnconfigure(0, weight=1)
-        self.grid(sticky=W + E + N + S)
 
         self.line_index_label_list = []
         self.line_content_text_list = []
         self.line_type_button_list = []
         self.line_label_button_list = []
+
+        # Adding Vertical scroll bar
+        # But that requires a canvas and Frame
+
+        self.canvas = Canvas(master, borderwidth=0, background="#ffffff")
+        self.frame = Frame(self.canvas, background="#ffffff")
+        self.vsb = Scrollbar(master, orient="vertical", command=self.canvas.yview)
+        self.canvas.configure(yscrollcommand=self.vsb.set)
+
+        self.vsb.grid(row=0, column=1, sticky=E + N + S)
+        self.canvas.grid(row=0, column=0, sticky=W + E + N + S)
+
+        self.canvas_frame = self.canvas.create_window((0, 0), window=self.frame, anchor="nw", tags="self.frame")
+
+        self.frame.bind("<Configure>", self.on_frame_configure)
+        self.canvas.bind('<Configure>', self.on_frame_width_change)
 
         for line_index, line in enumerate(table_content):
             self.build_line(table_content, line_index, line)
@@ -29,12 +44,25 @@ class AnnotatorGui(Frame):
         self.rowconfigure(1, weight=1)
         self.columnconfigure(1, weight=1)
 
+    def on_frame_configure(self, event):
+        # Reset the scroll region to encompass the inner frame
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+
+    def on_frame_width_change(self, event):
+        # Reset the frame width to expand on window resize
+        self.canvas.itemconfig(self.canvas_frame, width=event.width)
+
     def build_line(self, table_content, line_index, line):
         line_content = line[0]
 
-        line_index_label = Label(self, width=10, height=1, text=str(line_index))
+        # Index Number
+        line_index_label = Label(self.frame, width=7, height=1, text=str(line_index))
         line_index_label.grid(row=line_index, column=0, sticky=W + E + N + S)
-        line_content_text = Text(self, width=100, height=1)
+
+        # Content Text
+        Grid.rowconfigure(self.frame, line_index, weight=1)
+        Grid.columnconfigure(self.frame, 1, weight=1)
+        line_content_text = Text(self.frame, width=100, height=1)
         line_content_text.insert(INSERT, line_content)
         line_content_text.grid(row=line_index, column=1, sticky=W + E + N + S)
 
@@ -50,11 +78,16 @@ class AnnotatorGui(Frame):
             table_content[_line_index][2] = line_label
             line_label_button["text"] = "Type: " + line_labels[line_label]
 
-        line_type_button = Button(self, text="Type: Unknown", width=25,
-                                  command=lambda: line_type_button_click(line_index))
+        # Type Button
+        Grid.rowconfigure(self.frame, line_index, weight=1)
+        Grid.columnconfigure(self.frame, 2, weight=1)
+        line_type_button = Button(self.frame, text="Type: Unknown", width=25, command=lambda: line_type_button_click(line_index))
         line_type_button.grid(row=line_index, column=2, sticky=W + E + N + S)
-        line_label_button = Button(self, text='Label: Unknown', width=25,
-                                   command=lambda: line_label_button_click(line_index))
+
+        # Label Button
+        Grid.rowconfigure(self.frame, line_index, weight=1)
+        Grid.columnconfigure(self.frame, 3, weight=1)
+        line_label_button = Button(self.frame, text='Label: Unknown', width=25, command=lambda: line_label_button_click(line_index))
         line_label_button.grid(row=line_index, column=3, sticky=W + E + N + S)
 
         if line[1] != -1:
