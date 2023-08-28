@@ -113,7 +113,7 @@ def gui_annotate(training_data_dir_path, index, file_path, file_content):
 
 def main():
     current_dir = os.path.dirname(__file__)
-    current_dir = current_dir if current_dir is not '' else '.'
+    current_dir = current_dir if current_dir != '' else '.'
 
     data_dir_path = current_dir + '/data'  # directory to scan for any pdf files
     training_data_dir_path = current_dir + '/data/training_data'

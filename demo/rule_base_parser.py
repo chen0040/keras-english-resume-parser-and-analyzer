@@ -9,7 +9,7 @@ def main():
     from keras_en_parser_and_analyzer.library.utility.io_utils import read_pdf_and_docx
 
     current_dir = os.path.dirname(__file__)
-    current_dir = current_dir if current_dir is not '' else '.'
+    current_dir = current_dir if current_dir != '' else '.'
     data_dir_path = current_dir + '/data' # directory to scan for any pdf and docx files
 
     collected = read_pdf_and_docx(data_dir_path, command_logging=True)
