@@ -11,7 +11,7 @@ task of parsing a english resume.
 ### Parser Features 
 
 * English NLP using NLTK
-* Extract english texts using pdfminer.six and python-docx from PDF nad DOCX
+* Extract english texts using pdfminer.six and python-docx from PDF and DOCX
 * Rule-based resume parser has been implemented.
 
 ### Deep Learning Features
