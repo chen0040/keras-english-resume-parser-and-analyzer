@@ -11,7 +11,7 @@ task of parsing a english resume.
 ### Parser Features 
 
 * English NLP using NLTK
-* Extract english texts using pdfminer.six and python-docx from PDF nad DOCX
+* Extract english texts using pdfminer.six and python-docx from PDF and DOCX
 * Rule-based resume parser has been implemented.
 
 ### Deep Learning Features
@@ -19,7 +19,7 @@ task of parsing a english resume.
 * Tkinter-based GUI tool to generate and annotate deep learning training data from pdf and docx files
 * Deep learning multi-class classification using recurrent and cnn networks for
     * line type: classify each line of text extracted from pdf and docx file on whether it is a header, meta-data, or content
-    * line label classify each line of text extracted from pdf and docx file on whether it implies experience, education, etc.
+    * line label: classify each line of text extracted from pdf and docx file on whether it implies experience, education, etc.
     
 The included deep learning models that classify each line in the resume files include:
 

@@ -55,7 +55,7 @@ def extract_experience(parts, line):
     found = False
     result = None
     for w in parts:
-        if w.find('experience') != -1:
+        if w.find('experience' or 'work history') != -1:
             found = True
             continue
         if found and ':' not in w:

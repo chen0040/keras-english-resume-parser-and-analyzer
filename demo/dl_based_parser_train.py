@@ -12,7 +12,7 @@ def main():
     np.random.seed(random_state)
 
     current_dir = os.path.dirname(__file__)
-    current_dir = current_dir if current_dir is not '' else '.'
+    current_dir = current_dir if current_dir != '' else '.'
     output_dir_path = current_dir + '/models'
     training_data_dir_path = current_dir + '/data/training_data'
 
